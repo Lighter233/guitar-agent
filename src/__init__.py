@@ -1,1 +1,1 @@
-"""FretSense 源码包。"""
+"""guitar-agent 源码包。"""

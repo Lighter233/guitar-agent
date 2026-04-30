@@ -40,7 +40,7 @@ def test_embedding() -> None:
 
 def main() -> None:
     print("=" * 60)
-    print("FretSense - LLM 联通性测试")
+    print("guitar-agent - LLM 联通性测试")
     print("=" * 60)
     test_llm_chat()
     print()

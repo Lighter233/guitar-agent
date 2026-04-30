@@ -1,4 +1,4 @@
-"""FretSense 项目入口。
+"""guitar-agent 项目入口。
 
 当前阶段：MVP-0
     本入口仅完成「LLM 直连 + 系统提示词扮演吉他老师」的最小闭环。
@@ -22,7 +22,7 @@ from src.llm_client import LLMClient, get_llm_client
 # 系统提示词（MVP-0 临时版，Phase 1 之后由 Tutor Agent 接管）
 # ---------------------------------------------------------------------------
 
-SYSTEM_PROMPT = """你是 FretSense 的吉他教学助教，名叫 Fret。
+SYSTEM_PROMPT = """你是 guitar-agent 项目的吉他教学助教，名叫 Fret（取自吉他「品柱」一词）。
 
 角色设定：
 1. 你具备扎实的乐理与吉他演奏知识，能根据学生水平调整讲解深度。
@@ -47,10 +47,10 @@ HELP_COMMANDS = {":h", ":help"}
 def _print_banner(client: LLMClient) -> None:
     bar = "=" * 60
     print(bar)
-    print("  FretSense  -  自适应吉他教学 Agent")
+    print("  guitar-agent  -  自适应吉他教学 Agent")
     print(f"  Stage: MVP-0   |   LLM: {client.provider}/{client.model_name}")
     print(bar)
-    print("欢迎来到 FretSense，我是你的吉他老师助教 Fret。")
+    print("欢迎使用 guitar-agent，我是你的吉他老师助教 Fret。")
     print(f"输入问题开始对话；输入 {' / '.join(sorted(EXIT_COMMANDS))} 退出，:h 查看帮助。\n")
 
 
