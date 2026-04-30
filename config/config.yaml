@@ -1,0 +1,48 @@
+# FretSense 模型配置
+# ---------------------------------------------------------------------------
+# 安全约束：
+#   - 本文件**不允许**出现任何明文 API Key。
+#   - 所有密钥通过 `api_key_env` 字段引用环境变量名，真实值放 `.env`。
+#   - `.env` 已被 `.gitignore` 忽略，不会进入版本库。
+# ---------------------------------------------------------------------------
+
+model:
+  # 默认 provider；可用环境变量 MODEL_PROVIDER 覆盖（例如本地调试切到 sglang）
+  provider: aliyun
+  provider_env: MODEL_PROVIDER
+  temperature: 0
+  request_timeout_sec: 90
+  max_retries: 1
+  max_tokens: 2048
+
+  providers:
+    aliyun:
+      name: qwen-turbo
+      api_key_env: API_KEY_Qwen
+      base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      max_tokens: 2048
+
+    sglang:
+      name: qwen3-4b
+      api_key_env: SGLANG_API_KEY
+      base_url: http://127.0.0.1:30000/v1
+      max_tokens: 2048
+
+embedding:
+  # 默认 provider；可用环境变量 EMBEDDING_PROVIDER 覆盖
+  provider: aliyun
+  provider_env: EMBEDDING_PROVIDER
+
+  providers:
+    aliyun:
+      name: text-embedding-v3
+      api_key_env: API_KEY_Qwen
+      base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      request_timeout_sec: 60
+
+    sglang:
+      # 本地 sglang 若未提供 embedding 服务，请将 EMBEDDING_PROVIDER 切回 aliyun
+      name: text-embedding-v3
+      api_key_env: SGLANG_API_KEY
+      base_url: http://127.0.0.1:30000/v1
+      request_timeout_sec: 60
